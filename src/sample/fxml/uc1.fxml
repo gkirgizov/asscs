@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane fx:controller="sample.ResourceCenterController"
+        maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="405.0" prefWidth="603.0">
+         <items>
+            <MenuBar>
+               <menus>
+                  <Menu mnemonicParsing="false" text="Edit">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Create New Query" />
+                        <MenuItem mnemonicParsing="false" text="Copy From Existing" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="View">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Force Refresh" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <SplitPane dividerPositions="0.32608695652173914" prefHeight="160.0" prefWidth="200.0">
+               <items>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="373.0" prefWidth="217.0" vbarPolicy="ALWAYS">
+                     <content>
+                        <VBox prefHeight="374.0" prefWidth="178.0">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="5.0" layoutY="6.0" prefHeight="16.0" prefWidth="159.0" text="Water Asteroids" />
+                                 </children>
+                              </Pane>
+                              <Separator prefHeight="3.0" prefWidth="178.0" />
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="5.0" layoutY="6.0" prefHeight="16.0" prefWidth="159.0" text="Iron Asteroids #4" />
+                                 </children>
+                              </Pane>
+                              <VBox prefHeight="59.0" prefWidth="178.0" />
+                              <Separator prefHeight="3.0" prefWidth="178.0" />
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="5.0" layoutY="6.0" prefHeight="16.0" prefWidth="159.0" text="Special Equipment" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <Accordion prefWidth="635.0">
+                     <panes>
+                        <TitledPane animated="false" text="Sort &amp; Filter">
+                           <content>
+                              <GridPane alignment="CENTER">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Apply" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Button mnemonicParsing="false" text="Reset" GridPane.rowIndex="2" />
+                                    <Label text="Sort By" />
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                       <children>
+                                          <ChoiceBox prefWidth="150.0" />
+                                       </children>
+                                    </VBox>
+                                    <Label text="Filter By" GridPane.rowIndex="1" />
+                                    <VBox alignment="CENTER" layoutX="218.0" layoutY="20.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <children>
+                                          <ChoiceBox prefWidth="150.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </GridPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Full Query Information">
+                           <content>
+                              <GridPane>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="148.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="233.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Query Title" />
+                                    <Label text="Priority" GridPane.rowIndex="2" />
+                                    <Label text="high" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label text="Iron Asteroids #4" GridPane.columnIndex="1" />
+                                    <Label text="Resources" GridPane.rowIndex="3" />
+                                    <Label text="Soft Deadline" GridPane.rowIndex="4" />
+                                    <Label text="Hard Deadline" GridPane.rowIndex="5" />
+                                    <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                      <columns>
+                                        <TableColumn prefWidth="84.0" text="Type" />
+                                        <TableColumn prefWidth="104.0" text="Quantity" />
+                                      </columns>
+                                    </TableView>
+                                    <Label text="Description" GridPane.rowIndex="1" />
+                                    <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="Iron asteroids are needed as catalyzers for Venusian atmosphere" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <DatePicker editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <DatePicker editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                 </children>
+                              </GridPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Status &amp; Control">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <GridPane>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="175.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="206.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Creation" />
+                                          <Label text="Done" GridPane.columnIndex="1" />
+                                          <Label text="RC" GridPane.rowIndex="1" />
+                                          <Label text="MCC" GridPane.rowIndex="3" />
+                                          <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label text="Awaiting Response" />
+                                                <Button fx:id="rcBtnCancel" mnemonicParsing="false" onMouseClicked="#clicked" text="Cancel" />
+                                             </children>
+                                          </HBox>
+                                          <Label text="Not Started" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label text="Carriers" GridPane.rowIndex="2" />
+                                          <Label text="Awaiting Response" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label text="Delivery" GridPane.rowIndex="4" />
+                                          <Label text="Not Started" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <Label text="Descent" GridPane.rowIndex="5" />
+                                          <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <children>
+                                                <Label text="Not Started" />
+                                                <Button disable="true" mnemonicParsing="false" text="Allow" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                     </panes>
+                  </Accordion>
+               </items>
+            </SplitPane>
+         </items>
+      </SplitPane>
+   </children>
+</Pane>

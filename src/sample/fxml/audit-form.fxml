@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<SplitPane dividerPositions="0.9371859296482412" orientation="VERTICAL" prefHeight="400.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+      <GridPane>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="131.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="385.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Period" />
+            <Label text="Aggregation" GridPane.rowIndex="3" />
+            <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Label text="Data format: " />
+                  <ChoiceBox prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Final date: " />
+                  <DatePicker />
+               </children></HBox>
+            <CheckBox mnemonicParsing="false" text="Interrupting audit" GridPane.rowIndex="1" />
+            <CheckBox mnemonicParsing="false" text="Raw data" GridPane.rowIndex="2" />
+            <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
+               <children>
+                  <Label text="From " />
+                  <DatePicker prefHeight="26.0" prefWidth="166.0" />
+                  <Label text=" to " />
+                  <DatePicker prefHeight="26.0" prefWidth="165.0" />
+               </children>
+            </HBox>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <CheckBox mnemonicParsing="false" text="Mean" />
+                  <CheckBox mnemonicParsing="false" text="Deviation" GridPane.rowIndex="1" />
+                  <CheckBox mnemonicParsing="false" text="Max/min" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+      <GridPane alignment="CENTER" prefHeight="218.0" prefWidth="373.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="10.0" prefWidth="421.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="78.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="75.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" text="Cancel" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" text="Start" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+  </items>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</SplitPane>
