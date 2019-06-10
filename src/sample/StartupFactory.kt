@@ -12,9 +12,10 @@ class StartupFactory {
 
     @Throws(IOException::class)
     fun getScene(userID: UserID): Parent {
-//        val mainFormId = "/sample/fxml/mainInfoForm.fxml"
-        val mainFormId = "fxml/mainInfoForm.fxml"
+        val mainFormId = "resources/mainInfoForm.fxml"
         val mainFormResource = javaClass.getResource(mainFormId)
+//        println("Working Directory = ${System.getProperty("user.dir")}")
+//        println("file $mainFormId exists? ${File(mainFormId).exists()}")
         println("resource for $mainFormId: $mainFormResource")
         assert(mainFormResource != null)
 
@@ -57,8 +58,8 @@ class StartupFactory {
 
 
         val viewMap = mapOf(
-            UserID.RC to "fxml/uc2.fxml",
-            UserID.SCI to "fxml/uc1.fxml"
+            UserID.RC to "resources/uc2.fxml",
+            UserID.SCI to "resources/uc1.fxml"
         )
     }
 }
