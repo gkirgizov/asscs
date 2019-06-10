@@ -9,14 +9,15 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/uc1.fxml"));
-        Parent root = fxmlLoader.load();
-        // specialize type
-        InfoController controller = fxmlLoader.getController();
-        // provide data needed
-//        controller.setUser(user_id);
+        // todo: get userID from command line args?
+
+        Parent root = new StartupFactory().getScene(UserID.RC);
+
+//        String mainFormId = "fxml/mainInfoForm.fxml";
+//        FXMLLoader mainFxmlLoader = new FXMLLoader(getClass().getResource(mainFormId));
+//        Parent root = mainFxmlLoader.load();
 
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setTitle("Hello World");

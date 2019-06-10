@@ -11,19 +11,20 @@ interface DBReader {
     fun getQueries(count: Int?): Iterable<ResourceQuery>
 }
 
-interface DBWriter {
+// Writer also has read access
+interface DBWriter : DBReader {
 
     fun updateQuery(queryId: Int, updatedState: ResourceQuery.State, datetime: Date): Unit
 }
 
 
-class DBReaderImpl(private val userID: UserID): DBReader {
+open class DBReaderImpl(protected val userID: UserID): DBReader {
     override fun getQueries(count: Int?): Iterable<ResourceQuery> {
         TODO("not implemented")
     }
 }
 
-class DBWriterImpl(private val userID: UserID): DBWriter {
+class DBWriterImpl(userID: UserID): DBWriter, DBReaderImpl(userID) {
     override fun updateQuery(queryId: Int, updatedState: ResourceQuery.State, datetime: Date) {
         TODO("not implemented")
     }

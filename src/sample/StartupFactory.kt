@@ -1,6 +1,7 @@
 package sample
 
 import db.DBReaderImpl
+import db.DBWriterImpl
 import javafx.scene.Parent
 import javafx.fxml.FXMLLoader
 
@@ -8,29 +9,54 @@ import java.io.IOException
 
 
 class StartupFactory {
-    //    private String getView(UserID userID) {
-    //        return
-    //    }
 
     @Throws(IOException::class)
     fun getScene(userID: UserID): Parent {
-        val mainFormId = "fxml/main_info.fxml"
-        val mainFxmlLoader = FXMLLoader(javaClass.getResource(mainFormId))
+//        val mainFormId = "/sample/fxml/mainInfoForm.fxml"
+        val mainFormId = "fxml/mainInfoForm.fxml"
+        val mainFormResource = javaClass.getResource(mainFormId)
+        println("resource for $mainFormId: $mainFormResource")
+        assert(mainFormResource != null)
+
+        val mainFxmlLoader = FXMLLoader(mainFormResource)
         val root = mainFxmlLoader.load<Parent>()
 
-        // Inject controller dependencies
+        val queryCtrLoader = FXMLLoader(javaClass.getResource(viewMap[userID]))
+        val queryCtrParent = queryCtrLoader.load<Parent>()
+        val queryCtr = queryCtrLoader.getController<QueryController>()
+
+        // Some shared injected dependencies
         val dbReader = DBReaderImpl(userID)
+
+        when (queryCtr) {
+            is ResourceCenterController -> {
+                assert(userID == UserID.RC)
+
+                val dbWriter = DBWriterImpl(userID)
+                queryCtr.initialize(dbWriter)
+            }
+            is SciController -> {
+                assert(userID == UserID.SCI)
+
+                queryCtr.initialize(dbReader)
+            }
+            else -> throw IllegalStateException("Mismatch between user and controller!")
+        }
+        // Provide QueryController and its view to the main controller
+
+        // Inject controller dependencies
         val infoCtr = mainFxmlLoader.getController<InfoControllerProxy>()
-        infoCtr.ctr = InfoController(dbReader)
+        infoCtr.ctr = InfoController(dbReader, queryCtr, queryCtrParent)
         // todo: rabbitmq
 
-
-        //        FXMLLoader mainFxmlLoader = new FXMLLoader(getClass().getResource(getView(userId)));
         return root
     }
 
     companion object {
-        private val viewMap = mapOf(
+//        fun getControlCtr(userID: UserID):
+
+
+        val viewMap = mapOf(
             UserID.RC to "fxml/uc2.fxml",
             UserID.SCI to "fxml/uc1.fxml"
         )
