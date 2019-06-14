@@ -45,7 +45,7 @@ data class ResourceQuery(val id: Int = 0, val pr: Priority = Priority.Normal, va
     constructor(rs: ResultSet): this(rs.getInt("id"), Priority.valueOf(rs.getString("Priority")),
             rs.getInt("Hydrogen count"), rs.getInt("Iron count"), rs.getString("Special supplies"),
             rs.getDate("Preferred deadline"), rs.getDate("Last deadline"), State.valueOf(rs.getString("Status")),
-            rs.getDate("Created")){  }
+            rs.getDate("Updated")){  }
 
     //var
 }
