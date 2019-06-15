@@ -14,8 +14,6 @@ class StartupFactory {
     fun getScene(userID: UserID): Parent {
         val mainFormId = "resources/mainInfoForm.fxml"
         val mainFormResource = javaClass.getResource(mainFormId)
-//        println("Working Directory = ${System.getProperty("user.dir")}")
-//        println("file $mainFormId exists? ${File(mainFormId).exists()}")
         println("resource for $mainFormId: $mainFormResource")
         assert(mainFormResource != null)
 
@@ -41,6 +39,8 @@ class StartupFactory {
 
                 queryCtr.initialize(dbReader)
             }
+            is MockQueryControl -> {
+            }
             else -> throw IllegalStateException("Mismatch between user and controller!")
         }
         // Provide QueryController and its view to the main controller
@@ -56,10 +56,10 @@ class StartupFactory {
     companion object {
 //        fun getControlCtr(userID: UserID):
 
-
         val viewMap = mapOf(
             UserID.RC to "resources/uc2.fxml",
-            UserID.SCI to "resources/uc1.fxml"
+            UserID.SCI to "resources/uc1.fxml",
+            UserID.TEST to "resources/MockQueryControl.fxml"
         )
     }
 }

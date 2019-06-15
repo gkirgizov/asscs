@@ -15,7 +15,7 @@ public class Main extends Application {
 
         // todo: get userID from command line args?
 
-        Parent root = new StartupFactory().getScene(UserID.RC);
+        Parent root = new StartupFactory().getScene(UserID.TEST);
 
 //        String mainFormId = "fxml/mainInfoForm.fxml";
 //        FXMLLoader mainFxmlLoader = new FXMLLoader(getClass().getResource(mainFormId));
