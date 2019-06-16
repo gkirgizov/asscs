@@ -24,7 +24,8 @@ interface DBWriter : DBReader {
 
 open class DBReaderImpl(protected val userID: UserID): DBReader {
     override fun login() : Connection {
-        val url = "jdbc:postgresql://localhost/asscs"
+        val port = if (userID == UserID.RC) ":5432" else ":5433"
+        val url = "jdbc:postgresql://localhost" + port + "/postgres"
         val properties = Properties()
         properties.setProperty("user", userID.toString())
         properties.setProperty("password", userID.toString())
@@ -46,19 +47,19 @@ open class DBReaderImpl(protected val userID: UserID): DBReader {
         }
 
         return result
-        TODO("not implemented")
     }
 }
 
 class DBWriterImpl(userID: UserID): DBWriter, DBReaderImpl(userID) {
     override fun updateQuery(queryId: Int, updatedState: ResourceQuery.State, datetime: Date) {
-
-        val connection = login()
-        val st = connection.createStatement()
-        // if not RC then make it write to local file?
-        val query = "update public.\"ResourceQueries\" set \"Status\" = '${updatedState.toString()}', " +
-                "\"Updated\" = '${datetime.toString()}' where \"id\" = $queryId"
-        st.execute(query)
+        if (userID == UserID.RC) {
+            val connection = login()
+            val st = connection.createStatement()
+            // if not RC then make it write to local file?
+            val query = "update public.\"ResourceQueries\" set \"Status\" = '${updatedState.toString()}', " +
+                    "\"Updated\" = '${datetime.toString()}' where \"id\" = $queryId"
+            st.execute(query)
+        }
     }
 
 }
