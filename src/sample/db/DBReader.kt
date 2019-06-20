@@ -18,7 +18,7 @@ interface DBReader {
 // Writer also has read access
 interface DBWriter : DBReader {
 
-    fun updateQuery(queryId: Int, updatedState: ResourceQuery.State, datetime: Date): Unit
+    fun updateQuery(queryId: Int, hCount: Int = -1, iCount: Int = -1, updatedState: ResourceQuery.State, datetime: Date): Unit
 }
 
 
@@ -51,13 +51,15 @@ open class DBReaderImpl(protected val userID: UserID): DBReader {
 }
 
 class DBWriterImpl(userID: UserID): DBWriter, DBReaderImpl(userID) {
-    override fun updateQuery(queryId: Int, updatedState: ResourceQuery.State, datetime: Date) {
+    override fun updateQuery(queryId: Int, hCount: Int, iCount: Int, updatedState: ResourceQuery.State, datetime: Date) {
         if (userID == UserID.RC) {
             val connection = login()
             val st = connection.createStatement()
             // if not RC then make it write to local file?
+            val hAsteroids = if (hCount >= 0) ", \"Hydrogen count\" = $hCount" else ""
+            val iAsteroids = if (hCount >= 0) ", \"Iron count\" = $iCount" else ""
             val query = "update public.\"ResourceQueries\" set \"Status\" = '${updatedState.toString()}', " +
-                    "\"Updated\" = '${datetime.toString()}' where \"id\" = $queryId"
+                    "\"Updated\" = '${datetime.toString()}'"  + hAsteroids + iAsteroids + "where \"id\" = $queryId"
             st.execute(query)
         }
     }
