@@ -9,10 +9,10 @@ import javafx.scene.input.MouseEvent
 abstract class QueryController {
 
     fun initQuery(query: ResourceQuery) {
-        this.query = query
+        this.rquery = query
     }
 
-    protected lateinit var query: ResourceQuery
+    protected lateinit var rquery: ResourceQuery
 }
 
 
@@ -20,9 +20,13 @@ class ResourceCenterController : QueryController() {
 
     fun initialize(dbWriter: DBWriter) {
         this.dbWriter = dbWriter
+
+        // todo: get last id to init ResourceBuilder
+        this.rBuilder = ResourceQueryBuilder()
     }
 
     private lateinit var dbWriter: DBWriter
+    private lateinit var rBuilder: ResourceQueryBuilder
 
 
     fun clicked(mouseEvent: MouseEvent) {

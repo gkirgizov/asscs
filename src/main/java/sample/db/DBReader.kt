@@ -8,7 +8,7 @@ import java.util.*
 interface DBReader {
 
     // if null --- return all queries
-    fun getQueries(count: Int?): Iterable<ResourceQuery>
+    fun getQueries(count: Int? = null): Collection<ResourceQuery>
 }
 
 // Writer also has read access
@@ -19,7 +19,7 @@ interface DBWriter : DBReader {
 
 
 open class DBReaderImpl(protected val userID: UserID): DBReader {
-    override fun getQueries(count: Int?): Iterable<ResourceQuery> {
+    override fun getQueries(count: Int?): Collection<ResourceQuery> {
         TODO("not implemented")
     }
 }
